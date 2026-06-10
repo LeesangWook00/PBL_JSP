@@ -5,13 +5,18 @@
     String uid = request.getParameter("id");
     String upass = request.getParameter("ps");
 
+    if (uid == null || uid.trim().equals("") || upass == null || upass.trim().equals("")) {
+        out.print("<script>alert('아이디와 패스워드를 입력해주세요.'); history.back();</script>");
+        return;
+    }
+
     UserDAO dao = new UserDAO();
     int code = dao.login(uid, upass);
     if (code == 1) {
-        out.print("아이디가 존재하지 않습니다.");
+        out.print("<script>alert('아이디가 존재하지 않습니다.'); history.back();</script>");
     }
     else if (code == 2) {
-        out.print("패스워드가 일치하지 않습니다.");
+        out.print("<script>alert('패스워드가 일치하지 않습니다.'); history.back();</script>");
     }
     else {
         session.setAttribute("id", uid);
