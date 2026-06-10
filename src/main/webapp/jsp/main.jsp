@@ -43,38 +43,46 @@
             <div class="section-head">
                 <div>
                     <h2>게시판</h2>
-                    <p>글 작성, 이미지 첨부, 수정, 삭제가 가능한 피드 게시판입니다.</p>
+                    <p>글 작성, 이미지 첨부, 댓글, 수정, 삭제가 가능한 게시판입니다.</p>
                 </div>
+<% if (loginId != null) { %>
                 <a class="button button-inline" href="../html/feedAdd.html">글쓰기</a>
+<% } %>
             </div>
-            <div class="feed-grid">
+            <div class="board-list">
+                <div class="board-row board-head">
+                    <div class="board-no">번호</div>
+                    <div class="board-title">제목</div>
+                    <div class="board-author">작성자</div>
+                    <div class="board-date">작성일</div>
+                    <div class="board-manage">관리</div>
+                </div>
 <%
     ArrayList<FeedObj> feeds = (new FeedDAO()).getList2();
     if (feeds == null || feeds.isEmpty()) {
-        out.print("<div class='feed-card'><div class='feed-content'>등록된 글이 없습니다.</div></div>");
+        out.print("<div class='board-empty'>등록된 글이 없습니다.</div>");
     } else {
         ReplyDAO replyDao = new ReplyDAO();
         for (FeedObj feed : feeds) {
             String img = feed.getImages();
             String imgstr = "";
             if (img != null && !img.trim().isEmpty()) {
-                imgstr = "<div class='feed-img'><img src='../images/" + h(img) + "' alt='Image'></div>";
+                imgstr = "<div class='board-image'><img src='../images/" + h(img) + "' alt='Image'></div>";
             }
-            out.print("<div class='feed-card'>");
-            out.print("  <div class='feed-header'>");
-            out.print("    <strong class='feed-title'>" + h(feed.getTitle()) + "</strong>");
-            out.print("    <span class='feed-author'>" + h(feed.getId()) + "</span>");
-            out.print("    <span class='feed-time'>" + h(feed.getTs()) + "</span>");
-            out.print("  </div>");
-            out.print(imgstr);
-            out.print("  <div class='feed-content'>" + h(feed.getContent()).replace("\n", "<br>") + "</div>");
+            out.print("<div class='board-item'>");
+            out.print("  <div class='board-row'>");
+            out.print("    <div class='board-no'>" + feed.getNo() + "</div>");
+            out.print("    <div class='board-title'><strong>" + h(feed.getTitle()) + "</strong><p>" + h(feed.getContent()).replace("\n", "<br>") + "</p>" + imgstr + "</div>");
+            out.print("    <div class='board-author'>" + h(feed.getId()) + "</div>");
+            out.print("    <div class='board-date'>" + h(feed.getTs()) + "</div>");
+            out.print("    <div class='board-manage'>");
             if (loginId != null && loginId.equals(feed.getId())) {
-                out.print("  <div class='feed-actions'>");
-                out.print("    <a class='text-button' href='feedEdit.jsp?no=" + feed.getNo() + "'>수정</a>");
-                out.print("    <a class='text-button danger' href='feedDelete.jsp?no=" + feed.getNo() + "' onclick=\"return confirm('삭제하시겠습니까?');\">삭제</a>");
-                out.print("  </div>");
+                out.print("      <a class='text-button' href='feedEdit.jsp?no=" + feed.getNo() + "'>수정</a>");
+                out.print("      <a class='text-button danger' href='feedDelete.jsp?no=" + feed.getNo() + "' onclick=\"return confirm('삭제하시겠습니까?');\">삭제</a>");
             }
-            out.print("  <div class='reply-box'>");
+            out.print("    </div>");
+            out.print("  </div>");
+            out.print("  <div class='reply-box board-replies'>");
             ArrayList<ReplyObj> replies = replyDao.getList(feed.getNo());
             if (replies.isEmpty()) {
                 out.print("    <div class='reply-empty'>댓글이 없습니다.</div>");
