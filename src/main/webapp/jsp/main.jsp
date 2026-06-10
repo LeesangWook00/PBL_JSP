@@ -29,13 +29,15 @@
         <div class="menu-bar">
             <a href="../index.html">홈</a>
             <a href="main.jsp">피드</a>
-            <a href="../html/feedAdd.html">글쓰기</a>
+<% if (loginId == null) { %>
             <a href="../html/login.html">로그인</a>
             <a href="../html/signup.html">회원가입</a>
+<% } else { %>
+            <a href="../html/feedAdd.html">글쓰기</a>
             <a href="edit.jsp">정보수정</a>
-            <a href="../html/withdraw.html">회원탈퇴</a>
             <a href="userList.jsp">회원목록</a>
             <a href="logout.jsp">로그아웃</a>
+<% } %>
         </div>
         <div class="section">
             <div class="section-head">
@@ -51,6 +53,7 @@
     if (feeds == null || feeds.isEmpty()) {
         out.print("<div class='feed-card'><div class='feed-content'>등록된 글이 없습니다.</div></div>");
     } else {
+        ReplyDAO replyDao = new ReplyDAO();
         for (FeedObj feed : feeds) {
             String img = feed.getImages();
             String imgstr = "";
@@ -59,6 +62,7 @@
             }
             out.print("<div class='feed-card'>");
             out.print("  <div class='feed-header'>");
+            out.print("    <strong class='feed-title'>" + h(feed.getTitle()) + "</strong>");
             out.print("    <span class='feed-author'>" + h(feed.getId()) + "</span>");
             out.print("    <span class='feed-time'>" + h(feed.getTs()) + "</span>");
             out.print("  </div>");
@@ -70,6 +74,29 @@
                 out.print("    <a class='text-button danger' href='feedDelete.jsp?no=" + feed.getNo() + "' onclick=\"return confirm('삭제하시겠습니까?');\">삭제</a>");
                 out.print("  </div>");
             }
+            out.print("  <div class='reply-box'>");
+            ArrayList<ReplyObj> replies = replyDao.getList(feed.getNo());
+            if (replies.isEmpty()) {
+                out.print("    <div class='reply-empty'>댓글이 없습니다.</div>");
+            } else {
+                for (ReplyObj reply : replies) {
+                    out.print("    <div class='reply-item'>");
+                    out.print("      <div><strong>" + h(reply.getId()) + "</strong><span>" + h(reply.getTs()) + "</span></div>");
+                    out.print("      <p>" + h(reply.getContent()).replace("\n", "<br>") + "</p>");
+                    if (loginId != null && loginId.equals(reply.getId())) {
+                        out.print("      <a class='reply-delete' href='replyDelete.jsp?no=" + reply.getNo() + "' onclick=\"return confirm('댓글을 삭제하시겠습니까?');\">삭제</a>");
+                    }
+                    out.print("    </div>");
+                }
+            }
+            if (loginId != null) {
+                out.print("    <form class='reply-form' action='replyAdd.jsp' method='post'>");
+                out.print("      <input type='hidden' name='feedNo' value='" + feed.getNo() + "'>");
+                out.print("      <input name='content' type='text' placeholder='댓글 작성' required>");
+                out.print("      <input type='submit' value='등록'>");
+                out.print("    </form>");
+            }
+            out.print("  </div>");
             out.print("</div>");
         }
     }
