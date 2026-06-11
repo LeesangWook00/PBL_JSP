@@ -51,7 +51,6 @@
                     <th>아이디</th>
                     <th>이름</th>
                     <th>소개</th>
-                    <th>관리</th>
                 </tr>
 <% for (UserObj user : users) { %>
                 <tr>
@@ -65,9 +64,6 @@
                     <td data-label="아이디"><%= h(user.getId()) %></td>
                     <td data-label="이름"><%= h(user.getName()) %></td>
                     <td data-label="소개"><%= h(user.getBio()) %></td>
-                    <td data-label="관리">
-                        <a class="text-button follow-icon following" title="팔로우 취소" href="followToggle.jsp?targetId=<%= java.net.URLEncoder.encode(user.getId(), "UTF-8") %>&redirect=followingList.jsp">×</a>
-                    </td>
                 </tr>
 <% } %>
             </table>

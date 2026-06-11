@@ -586,24 +586,24 @@ p {
 .detail-like {
     display: inline-flex;
     align-items: center;
-    gap: 7px;
+    gap: 6px;
     flex: 0 0 auto;
-    color: #e43258;
+    color: #202035;
     background: transparent;
     border: 0;
-    font-size: 2.4em;
+    font-size: 1.35em;
     line-height: 1;
     text-decoration: none;
 }
 
 .detail-like span {
     color: #74778d;
-    font-size: 0.36em;
+    font-size: 0.72em;
     font-weight: 800;
 }
 
 .detail-like.active {
-    color: #d92f50;
+    color: #2f3c7e;
 }
 
 .view-meta {
@@ -1053,44 +1053,94 @@ p {
     }
 
     .board-row {
-        grid-template-columns: 36px minmax(0, 1fr);
+        grid-template-columns: minmax(0, 1fr);
         min-height: auto;
     }
 
     .board-row > div {
-        padding: 9px 6px;
+        padding: 0;
     }
 
     .board-head {
-        min-height: 34px;
+        display: none;
     }
 
     .board-search .text-button {
         grid-column: 1 / -1;
     }
 
-    .board-author,
-    .board-date,
-    .board-manage,
-    .board-reply,
-    .board-like {
-        grid-column: 2;
-        padding-top: 0;
-        padding-bottom: 3px;
+    .board-list {
+        border-top: 2px solid #202035;
+    }
+
+    .board-item {
+        padding: 14px 0;
+    }
+
+    .board-item .board-row {
+        display: grid;
+        grid-template-columns: 42px minmax(0, 1fr);
+        grid-template-areas:
+            "no title"
+            "no meta";
+        column-gap: 4px;
+        row-gap: 8px;
+        align-items: start;
+    }
+
+    .board-item .board-no {
+        grid-area: no;
+        padding-top: 2px;
+        color: #202035;
+        font-weight: 800;
+        text-align: center;
+    }
+
+    .board-item .board-title {
+        grid-area: title;
+        min-width: 0;
+    }
+
+    .board-title-link {
+        display: block;
+        line-height: 1.35;
+    }
+
+    .board-item .board-author,
+    .board-item .board-date,
+    .board-item .board-reply,
+    .board-item .board-like {
+        grid-area: meta;
+        display: inline-flex;
+        align-items: center;
+        width: auto;
+        padding: 0;
+        color: #74778d;
+        font-size: 0.92em;
         text-align: left;
     }
 
-    .board-author span,
-    .board-author small,
-    .board-date {
-        display: inline;
+    .board-item .board-author {
+        margin-top: 2px;
     }
 
-    .board-author small::before,
+    .board-item .board-date {
+        margin-left: 48px;
+    }
+
+    .board-item .board-reply {
+        margin-left: 178px;
+    }
+
+    .board-item .board-like {
+        margin-left: 242px;
+    }
+
     .board-date::before,
     .board-reply::before,
     .board-like::before {
-        content: " · ";
+        content: "·";
+        margin-right: 6px;
     }
 
     .board-reply::after {
@@ -1110,14 +1160,6 @@ p {
         min-height: 28px;
         padding: 0 8px;
         font-size: 0.82em;
-    }
-
-    .board-head .board-author,
-    .board-head .board-date,
-    .board-head .board-manage,
-    .board-head .board-reply,
-    .board-head .board-like {
-        display: none;
     }
 
     .board-replies {
@@ -1218,7 +1260,7 @@ p {
     }
 
     .detail-like {
-        font-size: 2em;
+        font-size: 1.2em;
     }
 
     .page-footer {
@@ -1288,18 +1330,18 @@ p {
 }
 
 .btn-follow {
-    background-color: #0095f6;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 6px 12px;
-    font-size: 14px;
-    font-weight: 600;
+    background-color: transparent !important;
+    color: #2f3c7e !important;
+    border: 0 !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    font-size: 0 !important;
+    font-weight: 900;
     cursor: pointer;
 }
 .btn-follow.following {
-    background-color: #efefef;
-    color: #262626;
+    background-color: transparent !important;
+    color: #258a54 !important;
 }
 
 .insta-feed-image {

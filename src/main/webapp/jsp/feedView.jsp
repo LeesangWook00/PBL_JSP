@@ -39,6 +39,9 @@
     boolean liked = likeDao.isLiked(feed.getNo(), loginId);
     String currentUrl = "feedView.jsp?no=" + feed.getNo() + "&page=" + pageNo + "&keyword=" + java.net.URLEncoder.encode(keyword, "UTF-8");
     String likeUrl = "likeToggle.jsp?no=" + feed.getNo() + "&redirect=" + java.net.URLEncoder.encode(currentUrl, "UTF-8");
+    FollowDAO followDao = new FollowDAO();
+    boolean following = followDao.isFollowing(loginId, feed.getId());
+    String followUrl = "followToggle.jsp?targetId=" + java.net.URLEncoder.encode(feed.getId(), "UTF-8") + "&redirect=" + java.net.URLEncoder.encode(currentUrl, "UTF-8");
 %>
 <!DOCTYPE html>
 <html>
@@ -77,6 +80,13 @@
                         <div>
                             <div class="view-author-meta">
                                 <b><%= h(feed.getAuthorName() == null ? feed.getId() : feed.getAuthorName()) %></b>
+                                <% if (loginId != null && !loginId.equals(feed.getId())) { %>
+                                    <% if (following) { %>
+                                    <span class="follow-icon following checked" title="팔로우 중">✓</span>
+                                    <% } else { %>
+                                    <a class="follow-icon" title="팔로우" href="<%= followUrl %>">+</a>
+                                    <% } %>
+                                <% } %>
                                 <span>|</span>
                                 <span><%= h(feed.getTs()) %></span>
                             </div>
@@ -84,9 +94,9 @@
                         </div>
                     </div>
                     <% if (loginId != null) { %>
-                    <a class="detail-like <%= liked ? "active" : "" %>" href="<%= likeUrl %>" title="<%= liked ? "좋아요 취소" : "좋아요" %>">♡ <span><%= feed.getLikeCount() %></span></a>
+                    <a class="detail-like <%= liked ? "active" : "" %>" href="<%= likeUrl %>" title="<%= liked ? "좋아요 취소" : "좋아요" %>">👍 <span><%= feed.getLikeCount() %></span></a>
                     <% } else { %>
-                    <span class="detail-like">♡ <span><%= feed.getLikeCount() %></span></span>
+                    <span class="detail-like">👍 <span><%= feed.getLikeCount() %></span></span>
                     <% } %>
                 </div>
             </div>
