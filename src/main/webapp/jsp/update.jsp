@@ -15,8 +15,7 @@
         return;
     }
 
-    String upass = null;
-    String upass2 = null;
+    String currentPassword = null;
     String uname = null;
     String ubio = null;
     String profileImage = null;
@@ -30,8 +29,7 @@
             String name = item.getFieldName();
             if (item.isFormField()) {
                 String value = item.getString("utf-8");
-                if (name.equals("ps")) upass = value;
-                else if (name.equals("ps2")) upass2 = value;
+                if (name.equals("currentPassword")) currentPassword = value;
                 else if (name.equals("name")) uname = value;
                 else if (name.equals("bio")) ubio = value;
             } else if (name.equals("profileImage")) {
@@ -45,13 +43,18 @@
             }
         }
 
-        if (upass != null && !upass.equals(upass2)) {
-            out.print("<script>alert('패스워드가 일치하지 않습니다.'); history.back();</script>");
+        if (currentPassword == null || currentPassword.trim().equals("")) {
+            out.print("<script>alert('현재 비밀번호를 입력해주세요.'); history.back();</script>");
             return;
         }
 
         UserDAO dao = new UserDAO();
-        boolean isSuccess = dao.update(uid, upass, uname, ubio, profileImage);
+        if (dao.login(uid, currentPassword) != 0) {
+            out.print("<script>alert('현재 비밀번호가 일치하지 않습니다.'); history.back();</script>");
+            return;
+        }
+
+        boolean isSuccess = dao.updateProfile(uid, uname, ubio, profileImage);
         if (isSuccess) {
             out.print("<script>alert('정보가 성공적으로 수정되었습니다.'); location.href='main.jsp';</script>");
         } else {

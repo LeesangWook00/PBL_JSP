@@ -14,7 +14,7 @@
         return;
     }
 
-    if (upass2 != null && !upass.equals(upass2)) {
+    if (upass2 == null || upass2.trim().equals("") || !upass.equals(upass2)) {
         out.print("<script>alert('패스워드가 일치하지 않습니다.'); history.back();</script>");
         return;
     }

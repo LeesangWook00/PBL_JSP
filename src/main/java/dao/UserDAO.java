@@ -63,6 +63,36 @@ public class UserDAO {
         }
     }
 
+    public boolean updateProfile(String uid, String uname, String ubio, String profileImage) throws NamingException, SQLException {
+        Connection conn = ConnectionPool.get();
+        PreparedStatement stmt = null;
+        try {
+            String sql = "UPDATE user SET name = ?, bio = ?";
+            if (profileImage != null && !profileImage.trim().equals("")) {
+                sql += ", profile_image = ?";
+            }
+            sql += " WHERE id = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, uname);
+            stmt.setString(2, ubio);
+            if (profileImage != null && !profileImage.trim().equals("")) {
+                stmt.setString(3, profileImage);
+                stmt.setString(4, uid);
+            } else {
+                stmt.setString(3, uid);
+            }
+
+            int count = stmt.executeUpdate();
+            return (count == 1) ? true : false;
+
+        } finally {
+            if (stmt != null)
+                stmt.close();
+            if (conn != null)
+                conn.close();
+        }
+    }
+
     public boolean exists(String uid) throws NamingException, SQLException {
         Connection conn = ConnectionPool.get();
         PreparedStatement stmt = null;

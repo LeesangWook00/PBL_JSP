@@ -702,6 +702,71 @@ p {
     font-weight: 800;
 }
 
+.profile-edit {
+    margin-top: 24px;
+    border-top: 1px solid #eceaf4;
+}
+
+.profile-label,
+.profile-field {
+    border-bottom: 1px solid #eceaf4;
+}
+
+.profile-edit {
+    display: grid;
+    grid-template-columns: 180px minmax(0, 1fr);
+}
+
+.profile-label {
+    padding: 28px 22px;
+    color: #202035;
+    background: #fbfbfe;
+    font-weight: 800;
+}
+
+.profile-field {
+    padding: 24px 28px;
+}
+
+.profile-photo-field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.profile-preview {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 124px;
+    height: 124px;
+    border-radius: 50%;
+    object-fit: cover;
+    color: #fff;
+    background: #2f3c7e;
+    border: 1px solid #e6e3f0;
+    font-size: 2.2em;
+    font-weight: 800;
+}
+
+.file-change-button {
+    width: auto !important;
+    min-width: 104px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.file-hidden {
+    position: absolute;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    opacity: 0;
+    pointer-events: none;
+}
+
 .hide { display: none; }
 .show { display: block; }
 
@@ -911,6 +976,31 @@ p {
         content: attr(data-label);
         color: #74778d;
         font-weight: 800;
+    }
+
+    .profile-edit {
+        display: block;
+        margin-top: 16px;
+        border-top: 0;
+    }
+
+    .profile-label {
+        padding: 16px 0 8px;
+        background: transparent;
+        border-bottom: 0;
+    }
+
+    .profile-field {
+        padding: 0 0 14px;
+    }
+
+    .profile-photo-field {
+        align-items: center;
+    }
+
+    .profile-preview {
+        width: 108px;
+        height: 108px;
     }
 
     .view-content {
