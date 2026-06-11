@@ -66,7 +66,9 @@ public class FeedDAO {
 
             ArrayList<FeedObj> feeds = new ArrayList<FeedObj>();
             while(rs.next()) {
-                feeds.add(new FeedObj(rs.getInt("no"), rs.getString("id"), rs.getString("title"), rs.getString("content"), rs.getString("ts"), rs.getString("images"), rs.getString("author_name"), rs.getInt("reply_count"), rs.getInt("like_count"), rs.getString("author_profile_image")));
+                String id = rs.getString("id");
+                String profileImage = ProfileUtil.resolveImage(id, rs.getString("author_profile_image"));
+                feeds.add(new FeedObj(rs.getInt("no"), id, rs.getString("title"), rs.getString("content"), rs.getString("ts"), rs.getString("images"), rs.getString("author_name"), rs.getInt("reply_count"), rs.getInt("like_count"), profileImage));
             }
             return feeds;
         } finally {
@@ -121,7 +123,9 @@ public class FeedDAO {
             rs = stmt.executeQuery();
 
             if (!rs.next()) return null;
-            return new FeedObj(rs.getInt("no"), rs.getString("id"), rs.getString("title"), rs.getString("content"), rs.getString("ts"), rs.getString("images"), rs.getString("author_name"), rs.getInt("reply_count"), rs.getInt("like_count"), rs.getString("author_profile_image"));
+            String id = rs.getString("id");
+            String profileImage = ProfileUtil.resolveImage(id, rs.getString("author_profile_image"));
+            return new FeedObj(rs.getInt("no"), id, rs.getString("title"), rs.getString("content"), rs.getString("ts"), rs.getString("images"), rs.getString("author_name"), rs.getInt("reply_count"), rs.getInt("like_count"), profileImage);
         } finally {
             if (rs != null) rs.close();
             if (stmt != null) stmt.close();

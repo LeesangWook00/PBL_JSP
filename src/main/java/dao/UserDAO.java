@@ -143,7 +143,9 @@ public class UserDAO {
 
             ArrayList<UserObj> users = new ArrayList<UserObj>();
             while (rs.next()) {
-                users.add(new UserObj(rs.getString("id"), rs.getString("name"), rs.getString("bio"), rs.getString("ts"), rs.getString("profile_image")));
+                String id = rs.getString("id");
+                String profileImage = ProfileUtil.resolveImage(id, rs.getString("profile_image"));
+                users.add(new UserObj(id, rs.getString("name"), rs.getString("bio"), rs.getString("ts"), profileImage));
             }
             return users;
         } finally {
@@ -168,7 +170,9 @@ public class UserDAO {
             stmt.setString(1, uid);
             rs = stmt.executeQuery();
             if (!rs.next()) return null;
-            return new UserObj(rs.getString("id"), rs.getString("name"), rs.getString("bio"), rs.getString("ts"), rs.getString("profile_image"));
+            String id = rs.getString("id");
+            String profileImage = ProfileUtil.resolveImage(id, rs.getString("profile_image"));
+            return new UserObj(id, rs.getString("name"), rs.getString("bio"), rs.getString("ts"), profileImage);
         } finally {
             if (rs != null)
                 rs.close();

@@ -110,7 +110,7 @@
             } else {
                 out.print("<span class='avatar avatar-small avatar-empty'>" + h((feed.getAuthorName() == null || feed.getAuthorName().equals("") ? feed.getId() : feed.getAuthorName()).substring(0, 1)) + "</span>");
             }
-            out.print("<span>" + h(feed.getAuthorName() == null ? feed.getId() : feed.getAuthorName()) + "</span><small>" + h(feed.getId()) + "</small></div>");
+            out.print("<span>" + h(feed.getAuthorName() == null ? feed.getId() : feed.getAuthorName()) + "</span></div>");
             out.print("    <div class='board-date'>" + h(feed.getTs()) + "</div>");
             out.print("  </div>");
             out.print("</div>");
