@@ -69,7 +69,7 @@
                     <td data-label="팔로워"><%= followerCount %></td>
                     <td data-label="관리">
                         <% if (uid != null && !uid.equals(user.getId())) { %>
-                        <a class="text-button" href="followToggle.jsp?targetId=<%= java.net.URLEncoder.encode(user.getId(), "UTF-8") %>"><%= following ? "팔로우 취소" : "팔로우" %></a>
+                        <a class="text-button follow-icon <%= following ? "following" : "" %>" title="<%= following ? "팔로우 취소" : "팔로우" %>" href="followToggle.jsp?targetId=<%= java.net.URLEncoder.encode(user.getId(), "UTF-8") %>"><%= following ? "×" : "+" %></a>
                         <% } else if (uid != null) { %>
                         <span class="muted-text">나</span>
                         <% } %>

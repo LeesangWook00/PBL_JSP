@@ -767,6 +767,52 @@ p {
     pointer-events: none;
 }
 
+.follow-icon {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px !important;
+    width: 28px !important;
+    height: 28px !important;
+    min-height: 28px !important;
+    padding: 0 !important;
+    color: #2f3c7e !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 50%;
+    font-size: 1.3em !important;
+    line-height: 1 !important;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.follow-icon.following {
+    color: #c43d54 !important;
+}
+
+.icon-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-right: 14px;
+    color: #202035;
+    background: transparent;
+    border: 0;
+    font-size: 1.1em;
+    line-height: 1;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.icon-action span {
+    color: #74778d;
+    font-size: 0.84em;
+}
+
+.icon-action.active {
+    color: #2f3c7e;
+}
+
 .hide { display: none; }
 .show { display: block; }
 

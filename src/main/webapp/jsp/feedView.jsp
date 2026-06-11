@@ -77,7 +77,7 @@
                     작성자 <b><%= h(feed.getAuthorName() == null ? feed.getId() : feed.getAuthorName()) %></b>
                     </span>
                     <span>작성일 <%= h(feed.getTs()) %></span>
-                    <span>추천 <%= feed.getLikeCount() %></span>
+                    <span>👍 <%= feed.getLikeCount() %></span>
                 </div>
             </div>
             <% if (feed.getImages() != null && !feed.getImages().trim().equals("")) { %>
@@ -89,7 +89,7 @@
             <div class="view-actions">
                 <a class="text-button" href="<%= listUrl %>">목록</a>
                 <% if (loginId != null) { %>
-                <a class="text-button" href="<%= likeUrl %>"><%= liked ? "추천 취소" : "추천" %></a>
+                <a class="icon-action <%= liked ? "active" : "" %>" href="<%= likeUrl %>" title="<%= liked ? "좋아요 취소" : "좋아요" %>">👍 <span><%= feed.getLikeCount() %></span></a>
                 <% } %>
                 <% if (loginId != null && loginId.equals(feed.getId())) { %>
                 <a class="text-button" href="feedEdit.jsp?no=<%= feed.getNo() %>">수정</a>
