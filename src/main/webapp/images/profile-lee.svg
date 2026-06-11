@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">
-  <rect width="160" height="160" rx="80" fill="#287b8f"/>
-  <circle cx="80" cy="62" r="30" fill="#ffffff" opacity="0.9"/>
-  <path d="M33 139c8-32 29-49 47-49s39 17 47 49" fill="#ffffff" opacity="0.9"/>
-  <text x="80" y="148" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#287b8f">LEE</text>
-</svg>
