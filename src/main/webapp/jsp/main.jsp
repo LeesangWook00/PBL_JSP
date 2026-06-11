@@ -47,6 +47,7 @@
             <a href="../html/feedAdd.html">글쓰기</a>
             <a href="edit.jsp">정보수정</a>
             <a href="userList.jsp">회원목록</a>
+            <a href="followingList.jsp">팔로우 목록</a>
             <a href="logout.jsp">로그아웃</a>
 <% } %>
         </div>
@@ -111,8 +112,8 @@
                                 <span class="insta-feed-time"><%= feed.getTs().substring(0, 16) %></span>
                             </div>
 <% if (loginId != null && !loginId.equals(feed.getId())) { %>
-                            <button class="btn-follow follow-icon <%= isFollowing ? "following" : "" %>" title="<%= isFollowing ? "팔로우 취소" : "팔로우" %>" onclick="location.href='followToggle.jsp?targetId=<%= feed.getId() %>'">
-                                <%= isFollowing ? "×" : "+" %>
+                            <button class="btn-follow follow-icon <%= isFollowing ? "following checked" : "" %>" title="<%= isFollowing ? "팔로우 중" : "팔로우" %>" <% if (!isFollowing) { %>onclick="location.href='followToggle.jsp?targetId=<%= feed.getId() %>&redirect=<%= java.net.URLEncoder.encode(currentUrl, "UTF-8") %>'"<% } %>>
+                                <%= isFollowing ? "✓" : "+" %>
                             </button>
 <% } %>
                         </div>

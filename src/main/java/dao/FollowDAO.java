@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.*;
+import java.util.ArrayList;
 import javax.naming.NamingException;
 import util.*;
 
@@ -58,6 +59,30 @@ public class FollowDAO {
             stmt.setString(2, targetId);
             stmt.executeUpdate();
         } finally {
+            if (stmt != null) stmt.close();
+            if (conn != null) conn.close();
+        }
+    }
+
+    public ArrayList<UserObj> getFollowingList(String followerId) throws NamingException, SQLException {
+        ArrayList<UserObj> users = new ArrayList<UserObj>();
+        if (followerId == null) return users;
+        Connection conn = ConnectionPool.get();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            String sql = "SELECT u.* FROM follow f JOIN user u ON f.target_id = u.id WHERE f.follower_id = ? ORDER BY f.ts DESC";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, followerId);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                String id = rs.getString("id");
+                String profileImage = ProfileUtil.resolveImage(id, rs.getString("profile_image"));
+                users.add(new UserObj(id, rs.getString("name"), rs.getString("bio"), rs.getString("ts"), profileImage));
+            }
+            return users;
+        } finally {
+            if (rs != null) rs.close();
             if (stmt != null) stmt.close();
             if (conn != null) conn.close();
         }

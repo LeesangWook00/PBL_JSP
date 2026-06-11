@@ -944,6 +944,16 @@ p {
     content: "×";
 }
 
+.btn-follow.checked::before,
+.follow-icon.checked::before {
+    content: "✓";
+}
+
+.follow-icon.checked {
+    color: #258a54 !important;
+    cursor: default;
+}
+
 .hide { display: none; }
 .show { display: block; }
 

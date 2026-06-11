@@ -8,14 +8,17 @@
     }
 
     String targetId = request.getParameter("targetId");
+    String redirect = request.getParameter("redirect");
+    if (redirect == null || redirect.trim().equals("")) redirect = "userList.jsp";
+
     if (targetId == null || targetId.trim().equals("") || uid.equals(targetId)) {
-        response.sendRedirect("userList.jsp");
+        response.sendRedirect(redirect);
         return;
     }
 
     try {
         (new FollowDAO()).toggle(uid, targetId);
-        response.sendRedirect("userList.jsp");
+        response.sendRedirect(redirect);
     } catch (Exception e) {
         out.print("<script>alert('팔로우 처리 중 오류가 발생했습니다.'); history.back();</script>");
     }
