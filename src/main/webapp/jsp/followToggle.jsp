@@ -9,7 +9,7 @@
 
     String targetId = request.getParameter("targetId");
     String redirect = request.getParameter("redirect");
-    if (redirect == null || redirect.trim().equals("")) redirect = "userList.jsp";
+    if (redirect == null || redirect.trim().equals("")) redirect = "followingList.jsp";
 
     if (targetId == null || targetId.trim().equals("") || uid.equals(targetId)) {
         response.sendRedirect(redirect);

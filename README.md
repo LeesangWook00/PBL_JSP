@@ -17,9 +17,9 @@ MySNS 주요 화면 구성입니다.
 |-----------|-------------|--------|
 | ![피드 목록 화면](src/main/webapp/images/mainjsp.png) | ![게시글 상세 화면](src/main/webapp/images/feedViewjsp.png) | ![글쓰기 화면](src/main/webapp/images/feedAddjsp.png) |
 
-| 정보수정 | 회원목록 | 로그아웃 |
-|----------|----------|----------|
-| ![정보수정 화면](src/main/webapp/images/editjsp.png) | ![회원목록 화면](src/main/webapp/images/userListjsp.png) | ![로그아웃 화면](src/main/webapp/images/logout.png) |
+| 정보수정 | 로그아웃 |
+|----------|----------|
+| ![정보수정 화면](src/main/webapp/images/editjsp.png) | ![로그아웃 화면](src/main/webapp/images/logout.png) |
 
 
 ## 팀소개
@@ -221,7 +221,7 @@ PBL_JSP
 │           │   ├── feedDelete.jsp
 │           │   ├── replyAdd.jsp
 │           │   ├── replyDelete.jsp
-│           │   └── userList.jsp
+│           │   └── followingList.jsp
 │           ├── SQL
 │           │   ├── mysns.sql
 │           │   ├── data.sql

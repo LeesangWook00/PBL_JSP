@@ -22,7 +22,7 @@
 <% } else { %>
             <a href="html/feedAdd.html">글쓰기</a>
             <a href="jsp/edit.jsp">정보수정</a>
-            <a href="jsp/userList.jsp">회원목록</a>
+            <a href="jsp/followingList.jsp">팔로우 목록</a>
             <a href="jsp/logout.jsp">로그아웃</a>
 <% } %>
         </div>
@@ -47,9 +47,9 @@
                     <strong>글쓰기</strong>
                     <span>새 게시글을 작성하고 이미지를 첨부합니다.</span>
                 </a>
-                <a class="home-card" href="jsp/userList.jsp">
-                    <strong>회원목록</strong>
-                    <span>다른 회원을 확인하고 팔로우합니다.</span>
+                <a class="home-card" href="jsp/followingList.jsp">
+                    <strong>팔로우 목록</strong>
+                    <span>내가 팔로우한 회원을 확인합니다.</span>
                 </a>
 <% } %>
             </div>

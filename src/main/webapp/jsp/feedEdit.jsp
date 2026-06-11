@@ -48,7 +48,6 @@
             <a href="main.jsp">피드</a>
             <a href="../html/feedAdd.html">글쓰기</a>
             <a href="edit.jsp">정보수정</a>
-            <a href="userList.jsp">회원목록</a>
             <a href="logout.jsp">로그아웃</a>
         </div>
         <div class="section">
