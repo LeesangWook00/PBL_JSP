@@ -63,6 +63,10 @@
 <% } else { %>
             <a href="../html/feedAdd.html">글쓰기</a>
             <a href="edit.jsp">정보수정</a>
+            <% if ("root@abc.com".equals(loginId)) { %>
+            <a href="userList.jsp">회원목록</a>
+            <% } %>
+            <a href="followingList.jsp">팔로우 목록</a>
             <a href="logout.jsp">로그아웃</a>
 <% } %>
         </div>

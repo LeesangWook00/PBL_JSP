@@ -168,6 +168,7 @@ http://localhost:8080/PBL_JSP/index.html
 
 | 아이디 | 비밀번호 |
 |--------|----------|
+| `root@abc.com` | `111` |
 | `kim@abc.com` | `111` |
 | `lee@abc.com` | `111` |
 | `kwon@abc.com` | `111` |
