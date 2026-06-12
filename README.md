@@ -13,17 +13,12 @@ MySNS 주요 화면 구성입니다.
 |----|--------|----------|-----------|
 | ![홈 화면](src/main/webapp/images/indexjsp.png) | ![로그인 화면](src/main/webapp/images/loginjsp.png) | ![회원가입 화면](src/main/webapp/images/signupjsp.png) | ![피드 목록 화면](src/main/webapp/images/mainjsp.png) |
 
-| 게시글 상세 | 글쓰기 | 정보수정 | 사용자 목록 |
-|-------------|--------|----------|-------------|
-| ![게시글 상세 화면](src/main/webapp/images/feedViewjsp.png) | ![글쓰기 화면](src/main/webapp/images/feedAddjsp.png) | ![정보수정 화면](src/main/webapp/images/editjsp.png) | ![사용자 목록 화면](src/main/webapp/images/userListjsp.png) |
+| 게시글 상세 | 글쓰기 | 정보수정 | 사용자 목록 | 로그아웃 |
+|-------------|--------|----------|-------------|----------|
+| ![게시글 상세 화면](src/main/webapp/images/feedViewjsp.png) | ![글쓰기 화면](src/main/webapp/images/feedAddjsp.png) | ![정보수정 화면](src/main/webapp/images/editjsp.png) | ![사용자 목록 화면](src/main/webapp/images/userListjsp.png) |![로그아웃 화면](src/main/webapp/images/logout.png) | 
 
-| 로그아웃 | 기본 프로필 1 | 기본 프로필 2 | 기본 프로필 3 |
-|----------|---------------|---------------|---------------|
-| ![로그아웃 화면](src/main/webapp/images/logout.png) | ![기본 프로필 이미지 1](src/main/webapp/images/profile1.jpg) | ![기본 프로필 이미지 2](src/main/webapp/images/profile2.jpg) | ![기본 프로필 이미지 3](src/main/webapp/images/profile3.jpg) |
 
-| 관리자 프로필 |  |  |  |
-|---------------|--|--|--|
-| ![관리자 프로필 이미지](src/main/webapp/images/rootprofile.jpg) |  |  |  |
+
 
 
 ## 팀소개
