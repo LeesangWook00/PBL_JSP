@@ -37,7 +37,7 @@
         <div class="menu-bar">
             <a href="../index.jsp">홈</a>
             <a href="main.jsp">피드</a>
-            <a href="../html/feedAdd.html">글쓰기</a>
+            <a href="feedAddForm.jsp">글쓰기</a>
             <a href="edit.jsp">정보수정</a>
             <% if ("root@abc.com".equals(uid)) { %>
             <a href="userList.jsp">회원목록</a>

@@ -20,7 +20,7 @@
             <a href="html/login.html">로그인</a>
             <a href="html/signup.html">회원가입</a>
 <% } else { %>
-            <a href="html/feedAdd.html">글쓰기</a>
+            <a href="jsp/feedAddForm.jsp">글쓰기</a>
             <a href="jsp/edit.jsp">정보수정</a>
             <% if ("root@abc.com".equals(uid)) { %>
             <a href="jsp/userList.jsp">회원목록</a>
@@ -46,7 +46,7 @@
                     <span>새 계정을 만들고 게시판 기능을 사용합니다.</span>
                 </a>
 <% } else { %>
-                <a class="home-card" href="html/feedAdd.html">
+                <a class="home-card" href="jsp/feedAddForm.jsp">
                     <strong>글쓰기</strong>
                     <span>새 게시글을 작성하고 이미지를 첨부합니다.</span>
                 </a>

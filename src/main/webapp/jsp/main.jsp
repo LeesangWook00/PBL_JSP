@@ -44,7 +44,7 @@
             <a href="../html/login.html">로그인</a>
             <a href="../html/signup.html">회원가입</a>
 <% } else { %>
-            <a href="../html/feedAdd.html">글쓰기</a>
+            <a href="feedAddForm.jsp">글쓰기</a>
             <a href="edit.jsp">정보수정</a>
             <% if ("root@abc.com".equals(loginId)) { %>
             <a href="userList.jsp">회원목록</a>
@@ -60,7 +60,7 @@
                     <p>제목, 내용, 작성자로 검색할 수 있습니다.</p>
                 </div>
 <% if (loginId != null) { %>
-                <a class="button button-inline" href="../html/feedAdd.html">글쓰기</a>
+                <a class="button button-inline" href="feedAddForm.jsp">글쓰기</a>
 <% } %>
             </div>
             <form class="board-search" action="main.jsp" method="get">
