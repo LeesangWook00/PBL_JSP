@@ -34,7 +34,7 @@ while(iter.hasNext()) {
             ufname = item.getName();
             if (ufname != null && !ufname.trim().equals("")) {
                 Path p = Paths.get(ufname);
-                file = p.getFileName().toString();
+                file = FileUtil.safeFileName(uid, p.getFileName().toString());
                 ufile = item.get();
                 String root = application.getRealPath(java.io.File.separator);
                 FileUtil.saveImage(root, file, ufile);
@@ -48,6 +48,6 @@ if (title != null && !title.trim().equals("") && ucon != null && !ucon.trim().eq
     response.sendRedirect("main.jsp");
 }
 else {
-    out.print("작성 글의 업로드 중 오류가 발생하였습니다.");
+    out.print("<script>alert('작성 글을 업로드하는 중 오류가 발생했습니다.'); history.back();</script>");
 }
 %>

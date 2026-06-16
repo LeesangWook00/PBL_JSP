@@ -27,14 +27,6 @@ public class FeedDAO {
 	    }
 	}
 
-	public ArrayList<FeedObj> getList2() throws NamingException, SQLException {
-	    return getPage("", 1, 1000);
-	}
-
-    public ArrayList<FeedObj> search(String keyword) throws NamingException, SQLException {
-        return getPage(keyword, 1, 1000);
-    }
-
     public ArrayList<FeedObj> getPage(String keyword, int page, int pageSize) throws NamingException, SQLException {
         Connection conn = ConnectionPool.get();
         PreparedStatement stmt = null;
@@ -168,19 +160,4 @@ public class FeedDAO {
             if (conn != null) conn.close();
         }
     }
-	
-	public ResultSet getList_old() throws NamingException, SQLException {
-	    Connection conn = null;
-	    PreparedStatement stmt = null;
-	    try {
-	        String sql = "SELECT * FROM feed ORDER BY ts DESC";
-	        conn = ConnectionPool.get();
-	        stmt = conn.prepareStatement(sql);
-	        return stmt.executeQuery();
-
-	    } finally {
-	        if (stmt != null) stmt.close(); 
-	        if (conn != null) conn.close();
-	    }
-	}
 }
